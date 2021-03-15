@@ -13,4 +13,11 @@ Given a `Cell` object `cell`, the migration should set the value of
 - `cell.field_name == field.name` and
 - `cell.record.schema == field.schema`.
 
+## Performance Considerations
 
+Assume the following data properties:
+
+- The database has tens of millions of Cell objects,
+- millions of records,
+- hundreds of fields,
+- tens of schemas.
