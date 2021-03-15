@@ -21,3 +21,5 @@ Assume the following data properties:
 - millions of records,
 - hundreds of fields,
 - tens of schemas.
+
+The production database is running PostgreSQL 11.x.
