@@ -5,8 +5,16 @@ import django.db.models.deletion
 
 
 def set_field(apps, schema_editor):
-    # Complete this function
-    raise NotImplementedError
+    migrations.RunSQL(
+        """update store.cell set field_id = t.field_id
+        from (
+          SELECT f.id as field_id, c.id as cell_id
+          FROM store.schema s join store.field f on s.id = f.schema_id
+          join store.cell c on c.field_name = f.name
+          join store.record r on c.record_id = r.id and s.id = r.schema_id 
+        ) t
+        where store.cell.id = t.cell_id"""
+    )
 
 
 
