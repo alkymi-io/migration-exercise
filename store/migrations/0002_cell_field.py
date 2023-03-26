@@ -9,11 +9,11 @@ def set_field(apps, schema_editor):
         """update store.cell set field_id = t.field_id
         from (
           SELECT f.id as field_id, c.id as cell_id
-          FROM store.schema s join store.field f on s.id = f.schema_id
-          join store.cell c on c.field_name = f.name
-          join store.record r on c.record_id = r.id and s.id = r.schema_id 
+          FROM store_field f
+          join store_record r on f.schema_id = r.schema_id 
+          join store_cell c on c.field_name = f.name and c.record_id = r.id
         ) t
-        where store.cell.id = t.cell_id"""
+        where store_cell.id = t.cell_id"""
     )
 
 
